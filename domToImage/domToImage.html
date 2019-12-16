@@ -1,0 +1,57 @@
+<!--
+ * @Description: domToImage
+ * @Author: 郭军伟
+ * @Date: 2019-12-16 13:43:45
+ * @lastEditTime: Do not edit
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>domToImage</title>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button type='button' onClick="exportImage2()">导出图片</button>
+    </div>
+    <img src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" alt="">
+
+    <!-- <script src="../node_modules/html2canvas/dist/html2canvas.js"></script>
+    <script src="../node_modules/canvas2image/canvas2image.js"></script> -->
+    <script src="../node_modules/dom-to-image/dist/dom-to-image.min.js"></script>
+    <script>
+        function exportImage() {
+            domtoimage.toBlob(document.body)
+                .then(function (blob) {
+                    // window.saveAs(blob, 'body.png');
+                });
+        }
+
+        function exportImage2() {
+            domtoimage.toJpeg(document.body, { quality: 1 })
+                .then(function (dataUrl) {
+                    var aEl = document.createElement('a');
+                    aEl.download = 'body.jpeg';
+                    aEl.href = dataUrl;
+                    aEl.click();
+                });
+        }
+
+    </script>
+</body>
+
+</html>
